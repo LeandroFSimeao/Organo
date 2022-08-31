@@ -7,28 +7,28 @@ import { useState } from 'react';
 const Formulario = (props) => {
 
     const[nome, setNome] = useState('')
-    const[cargo, setCargo] = useState('')
+    const[nick, setNick] = useState('')
     const[imagem, setImagem] = useState('')
-    const[time, setTime] = useState('')
+    const[role, setRole] = useState('')
 
     const aoSalvar = (e) =>{
      e.preventDefault()
      props.aoColaboradorCadastrado({
         nome,
-        cargo,
+        nick,
         imagem,
-        time
+        role
      })
      setNome('')
-     setCargo('')
+     setNick('')
      setImagem('')
-     setTime('')
+     setRole('')
     }
 
     return (
         <section className='formulario'>
             <form onSubmit={aoSalvar}>
-                <h2>Preencha os dados para criar o card do colaborador</h2>
+                <h2>Preencha os dados para criar o card do player</h2>
                 <CampoTexto 
                     obrigatorio={true} 
                     label="Nome" 
@@ -38,10 +38,10 @@ const Formulario = (props) => {
                 />
                 <CampoTexto 
                     obrigatorio={true} 
-                    label="Cargo" 
-                    placeholder="Digite seu cargo"
-                    valor={cargo}
-                    aoAlterado={valor => setCargo(valor)}
+                    label="Nick" 
+                    placeholder="Digite seu nick"
+                    valor={nick}
+                    aoAlterado={valor => setNick(valor)}
                 />
                 <CampoTexto 
                     label="Imagem" 
@@ -51,10 +51,10 @@ const Formulario = (props) => {
                 />
                 <ListaSuspensa 
                 obrigatorio={true} 
-                label="Time" 
+                label="Role" 
                 itens={props.times} 
-                valor ={time}
-                aoAlterado={valor => setTime(valor)}
+                valor ={role}
+                aoAlterado={valor => setRole(valor)}
                 />
                 <Botao>
                     Criar Card
